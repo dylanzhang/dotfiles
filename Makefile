@@ -1,6 +1,6 @@
-# This Makefile is used for installing vimrc and zshrc from github
 remote = git://github.com/dylanzhang/dotfiles.git
 vundle = git://github.com/gmarik/vundle.git
+oh_my_zsh = git://github.com/robbyrussell/oh-my-zsh.git
 local = ~/.dotfiles
 
 install-all: download zsh vim
@@ -13,12 +13,11 @@ download:
 
 zsh:
 	ln -fs $(local)/zshrc ~/.zshrc
+	git clone -q $(oh_my_zsh) ~/.oh-my-zsh
 
-# depend on ctags, which is in exuberant-ctags in debian and ubuntu
+# rely on ctags, which is in exuberant-ctags in debian and ubuntu
 vim:
 	ln -fs $(local)/vimrc ~/.vimrc
 	@rm -rf ~/.vim/bundle/vundle
 	git clone -q $(vundle) ~/.vim/bundle/vundle
 	@vim +BundleInstall +qall
-	@mkdir -p ~/.vim/undo
-	@cp -r $(local)/snipmate-snippets/snippets ~/.vim/bundle/snipmate-snippets

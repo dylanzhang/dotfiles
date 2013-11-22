@@ -42,6 +42,17 @@ Macro
         @@                      Replay the latest remembered macros
 
 
+Register
+--------
+
+        :reg                    See Registers and their contents
+        "<table name>p          use other registers to copy contents
+                                <table name> can be single letter and number
+    System related registers
+        "*                      * Register relate to system selection buffer
+        "+                      + register relate to system clipboard
+
+
 key mappings
 --------
 
