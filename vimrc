@@ -434,7 +434,7 @@ set background=dark
 if has("gui_running")
     colorscheme solarized
 else
-    colorscheme desert
+    colorscheme molokai
 endif
 
 " Explicitly tell vim that the terminal supports 256 color
