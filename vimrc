@@ -36,6 +36,9 @@ set autoread
 " Display incomplete commands.
 set showcmd
 
+" Do not create *~ files
+set nobackup
+
 " Delete trailing white space on save, useful for Python and CoffeeScript ;)
 func! DeleteTrailingWS()
   exe "normal mz"
@@ -329,8 +332,11 @@ Bundle 'ctrlp.vim'
 let g:ctrlp_map = '<leader>p'
 map <leader>f :CtrlPMRU<CR>
 
-" 自动识别文件编码
+" Auto detect the file encoding
 Bundle 'FencView.vim'
+let g:fencview_autodetect = 1
+let g:fencview_checklines = 10
+map <F2> :FencView<cr>
 
 
 " ================

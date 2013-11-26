@@ -12,7 +12,8 @@ Basic Operations
         :saveas <path/to/file>  save as another file
         :x or ZZ or :wq     save and exit (:x means save when needed)
         :qa!                Exit all editing files without save
-        :bn and :bp and :n  Go to the next editing files when open multiple files
+        :bn and :bp and :n :N  Go to the next editing files when open multiple files
+        :files              See opened files
 
         w                   To the beginning of next word
         e                   To the end of the next word
@@ -32,6 +33,15 @@ Basic Operations
 
         Block operations
         0 <C-v> <C-d> I--   Insert -- in front of several lines
+
+        Search and replace
+        :s/<regexp>/<replacement>/g     Replace this line
+        :n1, n2s/<regexp>/<replacement>/g     Replace word between line n1, n2
+        :n1, $s/<regexp>/<replacement>/g    Replace word between line n1 and final line
+        :%s/<regexp>/<replacement>/gc       Replace all word in this file with confirm
+
+        .   Redo
+        :!command   do shell command
 
 
 Macro
@@ -167,6 +177,10 @@ Vundle sections
         <c-v>   Open selected entry in a new vertical split
         <c-x>   Open selected entry in a new Horizontal split
 
+- FencView
+
+        <F2>    Manually select encoding
+
 
 Moving around, tabs and buffers
 --------
@@ -179,6 +193,8 @@ Moving around, tabs and buffers
     <C-k>   Move to the up window
     <C-h>   Move to the left window
     <C-l>   Move to the right window
+
+    <C-wq>  Close current window
 
     Buffer related
     ,q      Quickly open a buffer for scripbble
