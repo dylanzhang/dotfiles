@@ -38,6 +38,12 @@ read -p 'Please enter your choice [1] or [2] or [3] or [4] Enter : ' choice
 echo
 echo '=========================================================================='
 
+if [ "$(whoami)" == "root" ]; then
+    if_sudo=""
+else
+    if_sudo="sudo"
+fi
+
 function install_vim_rc() {
     echo
     echo '================================================================'
@@ -47,7 +53,7 @@ function install_vim_rc() {
 
     vundle=git://github.com/gmarik/vundle.git
 
-    sudo apt-get install ctags vim
+    ${if_sudo} apt-get install ctags vim
 
     ln -fs $(pwd)/vimrc ~/.vimrc
     rm -rf ~/.vim/bundle/vundle
@@ -63,6 +69,7 @@ function install_zsh_rc() {
     echo
 
     oh_my_zsh=git://github.com/robbyrussell/oh-my-zsh.git
+    ${if_sudo} apt-get install zsh
 
     rm -rf $(pwd)
     git clone --recursive -q $(remote) $(pwd)
