@@ -48,11 +48,9 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 
 # Some new environmental variables
-export PATH=$PATH:$HOME/bin
+export PATH=$HOME/bin:$PATH
 export HISTSIZE=100
 
 # Some aliases
 alias rm='rm -i'
 alias grep='grep --color=auto'
-alias myip="sudo ifconfig eth0 | grep 'inet addr' | sed 's/^.*inet addr://g' | cut -d ' ' -f1"
-export MYIP=$(myip)

@@ -1,27 +1,89 @@
 #!/bin/bash
 #
 # Program:
-#   This script is used for configuring my system with default settings
-#
+#   This program is used for install some useful configurations in
+#       a newly installed Debian or Ubuntu system
+# Author:
+#   Dylan Zhang
+# Email:
+#   amzhang.ustc@gmail.com
 # Last modified:
-#   2013-11-22 Fri 10:56 PM
+#   2013-11-26 Tue 02:14 PM
 #
 
-# TODO: make this file useful for general usage
-#   Show a list of tasks, let user select which to execute
-#   Purpose: vim, zsh, font, related softwares
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+export PATH
 
-echo 'This script is used for '
-vundle=git://github.com/gmarik/vundle.git
-oh_my_zsh=git://github.com/robbyrussell/oh-my-zsh.git
+echo
+echo '=========================================================================='
+echo '= This script is used for configuring vim and zsh for Debian and Ubuntu'
+echo '=========================================================================='
+echo
+echo '=========================================================================='
+echo '= Which widget of the following would you like to install ? (Ctrl-C to abort)'
+echo '=========================================================================='
+echo
 
-rm -rf $(local)
-git clone --recursive -q $(remote) $(local)
+echo '1. Vimrc and related vim plugins      Enter [1]'
+echo
+echo '2. Zshrc and oh-my-zsh framework      Enter [2]'
+echo
+echo '3. All of the above                   Enter [3]'
+echo
+echo '4. Nothing to do                      Enter [4]'
+echo
 
-ln -fs $(local)/zshrc ~/.zshrc
-git clone -q $(oh_my_zsh) ~/.oh-my-zsh
+read -p 'Please enter your choice [1] or [2] or [3] or [4] Enter : ' choice
 
-ln -fs $(local)/vimrc ~/.vimrc
-rm -rf ~/.vim/bundle/vundle
-git clone -q $(vundle) ~/.vim/bundle/vundle
-vim +BundleInstall +qall
+echo
+echo '=========================================================================='
+
+function install_vim_rc() {
+    echo
+    echo '================================================================'
+    echo '= Configuring vimrc ...'
+    echo '================================================================'
+    echo
+
+    vundle=git://github.com/gmarik/vundle.git
+
+    sudo apt-get install ctags vim
+
+    ln -fs $(pwd)/vimrc ~/.vimrc
+    rm -rf ~/.vim/bundle/vundle
+    git clone -q $(vundle) ~/.vim/bundle/vundle
+    vim +BundleInstall +qall
+}
+
+function install_zsh_rc() {
+    echo
+    echo '================================================================'
+    echo '= Configuring zshrc ...'
+    echo '================================================================'
+    echo
+
+    oh_my_zsh=git://github.com/robbyrussell/oh-my-zsh.git
+
+    rm -rf $(pwd)
+    git clone --recursive -q $(remote) $(pwd)
+
+    ln -fs $(pwd)/zshrc ~/.zshrc
+    git clone -q $(oh_my_zsh) ~/.oh-my-zsh
+    chsh -s $(which zsh)
+}
+
+case $choice in
+    "1" )
+        install_vim_rc
+        ;;
+    "2" )
+        install_zsh_rc
+        ;;
+    "3" )
+        install_vim_rc
+        install_zsh_rc
+        ;;
+    * )
+        exit 0
+        ;;
+esac
