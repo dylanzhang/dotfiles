@@ -57,6 +57,7 @@ function install_vim_rc() {
 
     ln -fs $(pwd)/vimrc ~/.vimrc
     rm -rf ~/.vim/bundle/vundle
+    mkdir -p ~/.vim/bundle
     git clone -q $(vundle) ~/.vim/bundle/vundle
     vim +BundleInstall +qall
 }
