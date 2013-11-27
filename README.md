@@ -40,4 +40,9 @@ Congratulations, your computer is successfully configured with perfect vim and z
 
 **Notice: zsh will be in use the next time you login your Linux.**
 
+How to use
+--------
+
+If you are not sure how to use vim and zsh of my configuration, please read VimCheatSheet.md and ZshCheatSheet.md
+
 Enjoy your coding! :)
