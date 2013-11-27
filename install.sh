@@ -58,7 +58,7 @@ function install_vim_rc() {
     ln -fs $(pwd)/vimrc ~/.vimrc
     rm -rf ~/.vim/bundle/vundle
     mkdir -p ~/.vim/bundle
-    git clone -q $(vundle) ~/.vim/bundle/vundle
+    git clone -q ${vundle} ~/.vim/bundle/vundle
     vim +BundleInstall +qall
 }
 
@@ -72,11 +72,8 @@ function install_zsh_rc() {
     oh_my_zsh=git://github.com/robbyrussell/oh-my-zsh.git
     ${if_sudo} apt-get install zsh
 
-    rm -rf $(pwd)
-    git clone --recursive -q $(remote) $(pwd)
-
     ln -fs $(pwd)/zshrc ~/.zshrc
-    git clone -q $(oh_my_zsh) ~/.oh-my-zsh
+    git clone -q ${oh_my_zsh} ~/.oh-my-zsh
     chsh -s $(which zsh)
 }
 
