@@ -54,3 +54,7 @@ export HISTSIZE=100
 # Some aliases
 alias rm='rm -i'
 alias grep='grep --color=auto'
+
+# Get my ip address easily
+alias myip="/sbin/ifconfig eth0 | grep 'inet addr' | sed 's/^.*addr://g' | sed 's/Bcast.*$//g'"
+export MYIP=$(myip)

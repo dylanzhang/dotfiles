@@ -18,3 +18,9 @@ debian
 web-search
 
         bing/google/yahoo
+
+Self defined tools
+--------
+
+    myip    Easily read localhost's IP address
+    MYIP    A variable which record localhost's IP address
