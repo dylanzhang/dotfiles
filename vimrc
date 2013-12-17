@@ -118,7 +118,7 @@ Bundle 'tpope/vim-repeat'
     Bundle 'Tagbar'
 
     " Make <F9> to be the toggle of tagbar
-    nmap <F9> :TagbarToggle<CR>
+    nmap tl :TagbarToggle<CR>
     let g:tagbar_autofocus = 1
 " }
 

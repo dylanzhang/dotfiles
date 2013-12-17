@@ -101,7 +101,7 @@ Vundle sections
 
 - tagbar
 
-        <F9>    open tagbar
+        tl      open tagbar
 
         <c-]>   Go to the definition of any identifier
         <c-t>   Return back, it's ok with no confliction
