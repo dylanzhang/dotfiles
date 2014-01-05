@@ -85,6 +85,11 @@ key mappings
 Vundle sections
 --------
 
+- vim-session
+
+        :SaveSession    Save current session to 'default' session
+        :OpenSession    Open 'default' session
+
 - vim-fugitive
 
         [Short keys](https://github.com/tpope/vim-fugitive)

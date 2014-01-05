@@ -48,6 +48,8 @@ endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.coffee :call DeleteTrailingWS()
 
+" Mouse operation
+set mouse=a
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Key mappings
@@ -97,6 +99,11 @@ Bundle 'gmarik/vundle'
 " ===================
 " Original repos on github
 " ===================
+
+" Extended session management for Vim
+Bundle 'xolox/vim-session'
+let g:session_autoload = "no"
+let g:session_autosave = "no"
 
 " Git + Vim
 Bundle 'tpope/vim-fugitive'
