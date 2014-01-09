@@ -43,6 +43,9 @@ Basic Operations
         .   Redo
         :!command   do shell command
 
+        <C-o>               Go back to the last modified position
+        <C-i>               Go forward to the last editing position
+
 
 Macro
 --------
