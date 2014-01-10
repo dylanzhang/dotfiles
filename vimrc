@@ -133,7 +133,7 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tomasr/molokai'
 
 " Show indent line
-Bundle 'Yggdroot/indentLine'
+" Bundle 'Yggdroot/indentLine'
 
 " QML highlight
 Bundle 'peterhoeg/vim-qml'
