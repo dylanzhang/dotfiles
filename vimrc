@@ -433,8 +433,8 @@ set t_vb=
 set foldcolumn=1
 
 " Highlight current line
-set cursorline
-set cursorcolumn
+" set cursorline
+" set cursorcolumn
 
 
 " Enable syntax highlighting
