@@ -166,10 +166,11 @@ nnoremap <c-u> :NERDTreeToggle<cr>
 " Syntax checking plugin that runs files through external syntax checkers
 Bundle 'scrooloose/syntastic'
 " Make syntastic support c++11 syntax
-let g:syntastic_cpp_compiler_options = ' -std=c++11'
+" let g:syntastic_cpp_compiler_options = ' -std=c++11'
 " When using clang++ for syntax checking
-" let g:syntastic_cpp_compiler = 'clang++'
+let g:syntastic_cpp_compiler = 'clang++'
 " let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
+let g:syntastic_cpp_compiler_options = ' -std=c++11'
 
 " An on the fly syntax check for python
 Bundle 'kevinw/pyflakes-vim'
