@@ -53,7 +53,7 @@ function install_vim_rc() {
 
     vundle=git://github.com/gmarik/vundle.git
 
-    if [ ! -e "$(which vim)"]; then
+    if [ ! -e "$(which vim)" ]; then
         ${if_sudo} apt-get install ctags vim
     fi
 
@@ -73,7 +73,7 @@ function install_zsh_rc() {
 
     oh_my_zsh=git://github.com/robbyrussell/oh-my-zsh.git
 
-    if [ ! -e "$(which zsh)"]; then
+    if [ ! -e "$(which zsh)" ]; then
         ${if_sudo} apt-get install zsh
     fi
 
