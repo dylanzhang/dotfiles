@@ -293,6 +293,7 @@ Bundle 'Shougo/neocomplcache.vim'
 
 " Adds snippet support to Vim
 Bundle 'Shougo/neosnippet.vim'
+Bundle 'Shougo/neosnippet-snippets'
 
 " Neosnippet configures {
     " Plugin key-mappings.
