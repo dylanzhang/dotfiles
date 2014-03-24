@@ -36,6 +36,9 @@ set autoread
 " Display incomplete commands.
 set showcmd
 
+" Do not puts a '#...' line in column 1
+set cinkeys-=0#
+
 " Do not create *~ files
 set nobackup
 
@@ -133,7 +136,7 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tomasr/molokai'
 
 " Show indent line
-" Bundle 'Yggdroot/indentLine'
+Bundle 'Yggdroot/indentLine'
 
 " QML highlight
 Bundle 'peterhoeg/vim-qml'
