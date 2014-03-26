@@ -108,7 +108,7 @@ case $choice in
     "3" )
         install_tmux
         ;;
-    "3" )
+    "4" )
         install_vim_rc
         install_zsh_rc
         install_tmux
