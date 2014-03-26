@@ -54,6 +54,7 @@ export HISTSIZE=100
 # Some aliases
 alias rm='rm -i'
 alias grep='grep --color=auto'
+alias tmux='tmux -2'
 
 # Some conflicted aliases
 unalias ar
@@ -61,3 +62,14 @@ unalias ar
 # Get my ip address easily
 alias myip="/sbin/ifconfig eth0 | grep 'inet addr' | sed 's/^.*addr://g' | sed 's/Bcast.*$//g'"
 export MYIP=$(myip)
+
+# Start tmux on every shell login
+# If not running interactively, do not do anything
+[[ $- != *i* ]] && return
+
+# Start only one session on login, try attach at first, only create a session if no tmux is running
+# Test wheter tmux exists
+if which tmux 2>&1 > /dev/null; then
+    #if not inside a tmux session, and if no session is started, start a new session
+    test -z "$TMUX" && (tmux -2 attach || tmux -2 new-session)
+fi

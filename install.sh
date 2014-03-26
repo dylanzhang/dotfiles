@@ -28,12 +28,14 @@ echo '1. Vimrc and related vim plugins      Enter [1]'
 echo
 echo '2. Zshrc and oh-my-zsh framework      Enter [2]'
 echo
-echo '3. All of the above                   Enter [3]'
+echo '3. Tmux and its config files          Enter [3]'
 echo
-echo '4. Nothing to do                      Enter [4]'
+echo '4. All of the above                   Enter [4]'
+echo
+echo '5. Nothing to do                      Enter [5]'
 echo
 
-read -p 'Please enter your choice [1] or [2] or [3] or [4] Enter : ' choice
+read -p 'Please enter your choice [1] or [2] or [3] or [4] or [5] Enter : ' choice
 
 echo
 echo '=========================================================================='
@@ -82,6 +84,20 @@ function install_zsh_rc() {
     chsh -s $(which zsh)
 }
 
+function install_tmux() {
+    echo
+    echo '================================================================'
+    echo '= Configuring tmux ...'
+    echo '================================================================'
+    echo
+
+    if [ ! -e "$(which zsh)" ]; then
+        ${if_sudo} apt-get install tmux
+    fi
+
+    ln -fs $(pwd)/tmux.conf ~/.tmux.conf
+}
+
 case $choice in
     "1" )
         install_vim_rc
@@ -90,10 +106,20 @@ case $choice in
         install_zsh_rc
         ;;
     "3" )
+        install_tmux
+        ;;
+    "3" )
         install_vim_rc
         install_zsh_rc
+        install_tmux
         ;;
     * )
         exit 0
         ;;
 esac
+
+echo
+echo '================================================================'
+echo '= Done'
+echo '================================================================'
+echo
