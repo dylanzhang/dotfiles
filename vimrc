@@ -57,6 +57,9 @@ set mouse=a
 " Open files with utf-8 or gbk
 set fileencodings=utf-8,gbk
 
+" Fold settings
+set foldmethod=syntax
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Key mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
