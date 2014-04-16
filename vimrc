@@ -1,4 +1,4 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Maintainer:
 "       Dylan Zhang
 "       amzhang.ustc@gmail.com
@@ -53,6 +53,9 @@ autocmd BufWrite *.coffee :call DeleteTrailingWS()
 
 " Mouse operation
 set mouse=a
+
+" Open files with utf-8 or gbk
+set fileencodings=utf-8,gbk
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Key mappings
