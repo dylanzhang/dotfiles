@@ -74,6 +74,7 @@ function install_zsh_rc() {
     echo
 
     oh_my_zsh=git://github.com/robbyrussell/oh-my-zsh.git
+    auto_jump=git://github.com/joelthelion/autojump.git
 
     if [ ! -e "$(which zsh)" ]; then
         ${if_sudo} apt-get install zsh
@@ -81,6 +82,8 @@ function install_zsh_rc() {
 
     ln -fs $(pwd)/zshrc ~/.zshrc
     git clone -q ${oh_my_zsh} ~/.oh-my-zsh
+    git clone -q ${auto_jump} ~/.auto_jump
+    ~/.auto_jump/install.sh
     chsh -s $(which zsh)
 }
 

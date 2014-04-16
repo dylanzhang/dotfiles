@@ -41,26 +41,45 @@ ZSH_THEME="af-magic"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git debian fasd web-search)
+plugins=(git debian fasd web-search Autojump)
 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
+# Autojump
+[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && . ~/.autojump/etc/profile.d/autojump.sh
 
 # Some new environmental variables
 export PATH=$HOME/bin:$PATH
 export HISTSIZE=100
 
 # Some aliases
+alias cls='clear'
+alias ll='ls -l'
+alias la='ls -a'
+alias vi='vim'
+alias clang++='clang -std=c++11'
+alias g++='g++ -std=c++0x'
 alias rm='rm -i'
 alias grep='grep --color=auto'
 alias tmux='tmux -2'
+
+# Open these files use defined program
+alias -s py=vi
+alias -s c=vi
+alias -s cc=vi
+alias -s cpp=vi
+alias -s txt=vi
+alias -s gz='tar -xzvf'
+alias -s tgz='tar -xzvf'
+alias -s zip='unzip'
+alias -s bz2='tar -xjvf'
 
 # Some conflicted aliases
 unalias ar
 
 # Get my ip address easily
-alias myip="/sbin/ifconfig eth0 | grep 'inet addr' | sed 's/^.*addr://g' | sed 's/Bcast.*$//g'"
+alias myip="/sbin/ifconfig eth0 2>/dev/null | grep 'inet addr' | sed 's/^.*addr://g' | sed 's/Bcast.*$//g'"
 export MYIP=$(myip)
 
 # Start tmux on every shell login
