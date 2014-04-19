@@ -58,7 +58,7 @@ set mouse=a
 set fileencodings=utf-8,gbk
 
 " Fold settings
-set foldmethod=syntax
+" set foldmethod=syntax
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Key mappings
