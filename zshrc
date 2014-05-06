@@ -50,7 +50,7 @@ source $ZSH/oh-my-zsh.sh
 [[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && . ~/.autojump/etc/profile.d/autojump.sh
 
 # Some new environmental variables
-export PATH=$HOME/bin:$PATH
+export PATH=$HOME/algs4/bin:$HOME/bin:$PATH
 export HISTSIZE=100
 
 # Some aliases
@@ -58,7 +58,7 @@ alias cls='clear'
 alias ll='ls -l'
 alias la='ls -a'
 alias vi='vim'
-alias clang++='clang -std=c++11'
+alias clang++='clang++ -std=c++11'
 alias g++='g++ -std=c++0x'
 alias rm='rm -i'
 alias grep='grep --color=auto'
