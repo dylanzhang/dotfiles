@@ -205,6 +205,9 @@ Bundle 'terryma/vim-expand-region'
 Bundle 'bronson/vim-trailing-whitespace'
 map <leader><leader><space> :FixWhitespace<cr>
 
+" Automatically insert comments of a document
+Bundle 'DoxygenToolkit.vim'
+
 " Auto complete tool
 Bundle 'Shougo/neocomplcache.vim'
 
