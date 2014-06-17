@@ -109,6 +109,9 @@ Bundle 'gmarik/vundle'
 " Original repos on github
 " ===================
 
+" Accelerated smooth scroll
+Bundle 'yonchu/accelerated-smooth-scroll'
+
 " Extended session management for Vim
 Bundle 'xolox/vim-session'
 let g:session_autoload = "no"
