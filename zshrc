@@ -8,6 +8,10 @@ ZSH=$HOME/.oh-my-zsh
 # ZSH_THEME="ys"
 ZSH_THEME="af-magic"
 
+# UTF-8 support
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
@@ -50,7 +54,7 @@ source $ZSH/oh-my-zsh.sh
 [[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && . ~/.autojump/etc/profile.d/autojump.sh
 
 # Some new environmental variables
-export PATH=$HOME/algs4/bin:$HOME/bin:$PATH
+export PATH=$HOME/bin:$PATH
 export HISTSIZE=100
 
 # Some aliases
@@ -84,11 +88,11 @@ export MYIP=$(myip)
 
 # Start tmux on every shell login
 # If not running interactively, do not do anything
-[[ $- != *i* ]] && return
+# [[ $- != *i* ]] && return
 
 # Start only one session on login, try attach at first, only create a session if no tmux is running
 # Test wheter tmux exists
-if which tmux 2>&1 > /dev/null; then
+# if which tmux 2>&1 > /dev/null; then
     #if not inside a tmux session, and if no session is started, start a new session
-    test -z "$TMUX" && (tmux -2 attach || tmux -2 new-session)
-fi
+    # test -z "$TMUX" && (tmux -2 attach || tmux -2 new-session)
+# fi
