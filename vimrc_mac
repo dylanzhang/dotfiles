@@ -1,15 +1,15 @@
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Maintainer:
 "       Dylan Zhang
-"       amzhang.ustc@gmail.com
+"       amzhang.mail@foxmail.com
 "
 " Last Modified:
-"       2013-11-21 Thu 02:46 PM
+"       2018-10-01 Mon 11:26 AM
 "
 " Sections:
+"    -> Vundle sections
 "    -> General
 "    -> Key mappings
-"    -> Vundle sections
 "    -> VIM user interface
 "    -> Text, tab and indent related
 "    -> Moving around, tabs and buffers
@@ -18,120 +18,61 @@
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => General
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Use Vim settings, rather than Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
-set nocompatible
-
-" Sets how many lines of history VIM has to remember
-set history=60
-
-" Set to auto read when a file is changed from the outside
-set autoread
-
-" Display incomplete commands.
-set showcmd
-
-" Do not puts a '#...' line in column 1
-set cinkeys-=0#
-
-" Do not create *~ files
-set nobackup
-
-" Delete trailing white space on save, useful for Python and CoffeeScript ;)
-func! DeleteTrailingWS()
-  exe "normal mz"
-  %s/\s\+$//ge
-  exe "normal `z"
-endfunc
-autocmd BufWrite *.py :call DeleteTrailingWS()
-autocmd BufWrite *.coffee :call DeleteTrailingWS()
-
-" Mouse operation
-set mouse=a
-
-" Open files with utf-8 or gbk
-set fileencodings=utf-8,gbk
-
-" Fold settings
-" set foldmethod=syntax
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Key mappings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" With a map leader it's possible to do extra key combinations
-" like <leader>w saves the current file
-" g means global settings
-let mapleader = ","
-let g:mapleader = ","
-
-" Fast saving
-nmap <leader>w :w!<cr>
-
-" Replace ; for :
-nmap ; :
-
-" To insert timestamp, press F3
-nmap <F3> a<C-R>=strftime("%Y-%m-%d %a %I:%M %p")<CR><Esc>
-imap <F3> <C-R>=strftime("%Y-%m-%d %a %I:%M %p")<CR>
-
-" toggle between paste and normal: for 'safer' pasting from keyboard
-set pastetoggle=<F12>
-
-" Make jj to replace Esc in insertion mode
-imap jj <esc>
-
-" Visual mode pressing * or # searches for the current selection
-" Super useful! From an idea by Michael Naumann
-vnoremap <silent> * :call VisualSelection('f', '')<CR>
-vnoremap <silent> # :call VisualSelection('b', '')<CR>
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vundle sections
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-filetype off    " required
+" Use Vim settings, rather than Vi settings (much better!).
+" This must be first, because it changes other options as a side effect.
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
 
-" let Vundle manage Vundle
-" required!
-Bundle 'gmarik/vundle'
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
 
 " My Bundles here:
 
 " ===================
 " Original repos on github
 " ===================
+" Ruby
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-bundler'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-rails'
+
+" Ag
+Plugin 'mileszs/ack.vim'
+let g:ackprg = 'ag --vimgrep'
 
 " Extended session management for Vim
-Bundle 'xolox/vim-session'
+Plugin 'xolox/vim-session'
 let g:session_autoload = "no"
 let g:session_autosave = "no"
 
 " Git + Vim
-Bundle 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'
 
 " Change surroundings
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
 
 " CTags related {
     " First install ctags in the OS
 
     " Required by vim-easytags
-    Bundle 'xolox/vim-misc'
+    Plugin 'xolox/vim-misc'
 
     " Automated tag generation and syntax highlighting in Vim
-    Bundle 'xolox/vim-easytags'
+    Plugin 'xolox/vim-easytags'
 
     " Provide a sidebar to display the ctags-generated tags of the current line
-    Bundle 'Tagbar'
+    Plugin 'Tagbar'
 
     " Make <F9> to be the toggle of tagbar
     nmap tl :TagbarToggle<CR>
@@ -139,22 +80,22 @@ Bundle 'tpope/vim-repeat'
 " }
 
 " Molokai colorscheme
-Bundle 'tomasr/molokai'
+Plugin 'tomasr/molokai'
 
 " Show indent line
-Bundle 'Yggdroot/indentLine'
+" Plugin 'Yggdroot/indentLine'
 
 " QML highlight
-Bundle 'peterhoeg/vim-qml'
+Plugin 'peterhoeg/vim-qml'
 
 " An essential toolkit for web developers
-Bundle 'mattn/emmet-vim'
+Plugin 'mattn/emmet-vim'
 
 " A new way to find a word or letter
-Bundle 'Lokaltog/vim-easymotion'
+Plugin 'Lokaltog/vim-easymotion'
 
 " The ultimate vim statusline utility
-Bundle 'bling/vim-airline'
+Plugin 'bling/vim-airline'
 
 " Airline settings {
     " Automatically displays all buffers when there's only one tab open
@@ -167,49 +108,52 @@ Bundle 'bling/vim-airline'
 " }
 
 " A tree explorer plugin for navigating the filesystem
-Bundle 'scrooloose/nerdtree'
-
+Plugin 'scrooloose/nerdtree'
 " nerd tree plugin
 nnoremap <c-u> :NERDTreeToggle<cr>
+let NERDTreeChDirMode=1
+let NERDTreeShowBookmarks=1
+let NERDTreeIgnore=['\~$', '\.pyc$', '\.swp$']
+let NERDTreeWinSize=25
 
 " Syntax checking plugin that runs files through external syntax checkers
-Bundle 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 " Make syntastic support c++11 syntax
-" let g:syntastic_cpp_compiler_options = ' -std=c++11'
-" When using clang++ for syntax checking
-let g:syntastic_cpp_compiler = 'clang++'
-" let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11'
+" When using clang++ for syntax checking
+" let g:syntastic_cpp_compiler = 'clang++'
+" let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
+" let g:syntastic_cpp_compiler_options = ' -std=c++11'
 
 " An on the fly syntax check for python
-Bundle 'kevinw/pyflakes-vim'
+Plugin 'kevinw/pyflakes-vim'
 
 " Quickly and easily switch between buffers by using the one of the default public interfaces
-Bundle 'corntrace/bufexplorer'
+Plugin 'corntrace/bufexplorer'
 
 " Map <CR> to see the list of buffer
 noremap <silent> <CR> :BufExplorer<CR>
 
 " Sublime Text's multiple selction
-Bundle 'terryma/vim-multiple-cursors'
+Plugin 'terryma/vim-multiple-cursors'
 
 " Auto comment code
-Bundle 'tpope/vim-commentary'
+Plugin 'tpope/vim-commentary'
 nmap <BS> gcc
 vmap <BS> gc
 
 " Visually select increasingly larger regions of text using the same key bindings
-Bundle 'terryma/vim-expand-region'
+Plugin 'terryma/vim-expand-region'
 
 " Show trailing whitespace
-Bundle 'bronson/vim-trailing-whitespace'
+Plugin 'bronson/vim-trailing-whitespace'
 map <leader><leader><space> :FixWhitespace<cr>
 
 " Automatically insert comments of a document
-Bundle 'DoxygenToolkit.vim'
+Plugin 'DoxygenToolkit.vim'
 
 " Auto complete tool
-Bundle 'Shougo/neocomplcache.vim'
+Plugin 'Shougo/neocomplcache.vim'
 
 " Neocomplcache.vim configures {
     " Disable AutoComplPop.
@@ -304,8 +248,8 @@ Bundle 'Shougo/neocomplcache.vim'
 " }
 
 " Adds snippet support to Vim
-Bundle 'Shougo/neosnippet.vim'
-Bundle 'Shougo/neosnippet-snippets'
+Plugin 'Shougo/neosnippet.vim'
+Plugin 'Shougo/neosnippet-snippets'
 
 " Neosnippet configures {
     " Plugin key-mappings.
@@ -328,38 +272,48 @@ Bundle 'Shougo/neosnippet-snippets'
 " }
 
 " Python syntax highlight
-Bundle 'hdima/python-syntax'
+Plugin 'hdima/python-syntax'
 let python_highlight_all = 1
 
 " Markdown syntax highlight
-Bundle 'plasticboy/vim-markdown'
+Plugin 'plasticboy/vim-markdown'
+
 " Disable folding
 let g:vim_markdown_folding_disabled = 1
 
 " auto close
-Bundle 'kana/vim-smartinput'
+Plugin 'kana/vim-smartinput'
 
 " Use % to match tags in html
-Bundle 'vim-scripts/matchit.zip'
+Plugin 'vim-scripts/matchit.zip'
 
 " ===================
 " Vim-scripts repos
 " ===================
 
 " jump between .cpp/.h
-Bundle 'a.vim'
+Plugin 'a.vim'
 
 
 " Solarized colorscheme
-Bundle 'Solarized'
+Plugin 'Solarized'
 
 " A good way to search files
-Bundle 'ctrlp.vim'
+Plugin 'ctrlp.vim'
 let g:ctrlp_map = '<leader>p'
 map <leader>f :CtrlPMRU<CR>
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+if executable('ag')
+    " Use Ag over Grep
+    set grepprg=ag\ --nogroup\ --nocolor
+    " Use ag in CtrlP for listing files.
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+    " Ag is fast enough that CtrlP doesn't need to cache
+    let g:ctrlp_use_caching = 0
+endif
 
 " Auto detect the file encoding
-Bundle 'FencView.vim'
+Plugin 'FencView.vim'
 let g:fencview_autodetect = 1
 let g:fencview_checklines = 10
 map <F2> :FencView<cr>
@@ -371,16 +325,92 @@ map <F2> :FencView<cr>
 "Bundle 'git://git.wincent.com/command-t.git'
 " ...
 
-filetype plugin indent on     " required!
+" All of your Plugins must be added before the following line
+call vundle#end()           " required!
+filetype plugin indent on   " required!
+
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
 "
 " Brief help
-" :BundleList          - list configured bundles
-" :BundleInstall(!)    - install(update) bundles
-" :BundleSearch(!) foo - search(or refresh cache first) for foo
-" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 "
 " see :h vundle for more details or wiki for FAQ
-" NOTE: comments after Bundle command are not allowed..
+" Put your non-Plugin stuff after this line
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => General
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Sets how many lines of history VIM has to remember
+set history=60
+
+" Set to auto read when a file is changed from the outside
+set autoread
+
+" Display incomplete commands.
+set showcmd
+
+" Do not puts a '#...' line in column 1
+set cinkeys-=0#
+
+" Do not create *~ files
+set nobackup
+
+" Delete trailing white space on save, useful for Python and CoffeeScript ;)
+func! DeleteTrailingWS()
+  exe "normal mz"
+  %s/\s\+$//ge
+  exe "normal `z"
+endfunc
+autocmd BufWrite *.py :call DeleteTrailingWS()
+autocmd BufWrite *.coffee :call DeleteTrailingWS()
+
+" Mouse operation
+" set mouse=a
+
+" Open files with utf-8 or gbk
+set fileencodings=utf8,gbk
+" Terminal default encoding
+set termencoding=utf8
+
+" Fold settings
+" set foldmethod=syntax
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Key mappings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" With a map leader it's possible to do extra key combinations
+" like <leader>w saves the current file
+" g means global settings
+let mapleader = ","
+let g:mapleader = ","
+
+" Fast saving
+nmap <leader>w :w!<cr>
+
+" Replace ; for :
+nmap ; :
+
+" To insert timestamp, press F3
+nmap <F3> a<C-R>=strftime("%Y-%m-%d %a %I:%M %p")<CR><Esc>
+imap <F3> <C-R>=strftime("%Y-%m-%d %a %I:%M %p")<CR>
+
+" toggle between paste and normal: for 'safer' pasting from keyboard
+set pastetoggle=<F12>
+
+" Make fd to replace Esc in insertion mode
+imap fd <esc>
+
+" Visual mode pressing * or # searches for the current selection
+" Super useful! From an idea by Michael Naumann
+vnoremap <silent> * :call VisualSelection('f', '')<CR>
+vnoremap <silent> # :call VisualSelection('b', '')<CR>
+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -452,7 +482,7 @@ set t_vb=
 set foldcolumn=1
 
 " Highlight current line
-" set cursorline
+set cursorline
 " set cursorcolumn
 
 
@@ -485,8 +515,8 @@ set encoding=utf8
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
-" highlight column 81
-set colorcolumn=81
+" highlight column 100
+set colorcolumn=100
 
 " set asm file highlight
 augroup filetypedetect

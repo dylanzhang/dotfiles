@@ -5,8 +5,8 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-# ZSH_THEME="ys"
-ZSH_THEME="af-magic"
+ZSH_THEME="ys"
+# ZSH_THEME="af-magic"
 
 # UTF-8 support
 export LC_ALL=en_US.UTF-8
@@ -42,16 +42,15 @@ export LANG=en_US.UTF-8
 # much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git debian fasd web-search Autojump)
+# Jumbo
+[[ -s "/home/users/zhangaimin/.jumbo/etc/bashrc" ]] && source "/home/users/zhangaimin/.jumbo/etc/bashrc"
 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 # Autojump
-[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && . ~/.autojump/etc/profile.d/autojump.sh
+[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && source ~/.autojump/etc/profile.d/autojump.sh
+autoload -U compinit && compinit -u
 
 # Some new environmental variables
 export PATH=$HOME/bin:$PATH
@@ -62,8 +61,6 @@ alias cls='clear'
 alias ll='ls -l'
 alias la='ls -a'
 alias vi='vim'
-alias clang++='clang++ -std=c++11'
-alias g++='g++ -std=c++0x'
 alias rm='rm -i'
 alias grep='grep --color=auto'
 alias tmux='tmux -2'
@@ -80,7 +77,7 @@ alias -s zip='unzip'
 alias -s bz2='tar -xjvf'
 
 # Some conflicted aliases
-unalias ar
+# unalias ar
 
 # Get my ip address easily
 alias myip="/sbin/ifconfig eth0 2>/dev/null | grep 'inet addr' | sed 's/^.*addr://g' | sed 's/Bcast.*$//g'"
@@ -96,3 +93,21 @@ export MYIP=$(myip)
     #if not inside a tmux session, and if no session is started, start a new session
     # test -z "$TMUX" && (tmux -2 attach || tmux -2 new-session)
 # fi
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+plugins=(git Autojump)
+
+###############Please don't modify this section, or errors will occur!###############
+#BTEST_FLAG_START
+export BTEST_WORK_ROOT=/home/users/zhangaimin/svn//
+export BTEST_HOME=/home/users/zhangaimin/btest
+export GTEST_HOME=/home/users/zhangaimin/svn///com/btest/gtest/output
+export LD_LIBRARY_PATH=$GTEST_HOME/lib:$LD_LIBRARY_PATH
+export PATH=/home/users/zhangaimin/tools//bin:$BTEST_HOME/bin:$PATH
+#BTEST_FLAG_END
+###############Please don't modify this section, or errors will occur!###############
+
+# Hadoop Client Home
+# export HADOOP_HOME=/home/users/zhangaimin/sandbox/hadoop-client-rank/hadoop

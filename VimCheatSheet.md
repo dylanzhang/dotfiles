@@ -79,7 +79,7 @@ key mappings
         ,w  Save file in normal mode
         <F3>    Insert timestamp in normal and insertion mode
         <F12>   Enter paste mode
-        jj  Replace ESC in insertion mode
+        fd  Replace ESC in insertion mode
         *   Search for the current selection
         #   Same as *, but in a reverse direction
 

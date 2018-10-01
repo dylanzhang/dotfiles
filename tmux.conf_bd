@@ -1,6 +1,6 @@
 #-- base --#
 
-set -g default-terminal "screen-256color"
+# set -g default-terminal "screen-256color"
 set -g display-time 3000
 set -g history-limit 10000
 set -g base-index 1
@@ -8,7 +8,8 @@ set -g pane-base-index 1
 set -s escape-time 0
 
 #-- bindkeys --#
-set -g prefix ^k
+# set -g prefix ^k
+set -g prefix ^m
 unbind ^b
 
 set -g status-keys vi
@@ -64,13 +65,13 @@ bind r source-file ~/.tmux.conf \; display "Configuration Reloaded!"
 
 # OSX
 # getting tmux to copy a buffer to the clipboard
-set-option -g default-command "reattach-to-user-namespace -l zsh" # or bash...
-bind y run "tmux save-buffer - | reattach-to-user-namespace pbcopy" \; display-message "Copied tmux buffer to system clipboard"
-bind C-v run "reattach-to-user-namespace pbpaste | tmux load-buffer - && tmux paste-buffer"
+# set-option -g default-command "reattach-to-user-namespace -l zsh" # or bash...
+# bind y run "tmux save-buffer - | reattach-to-user-namespace pbcopy" \; display-message "Copied tmux buffer to system clipboard"
+# bind C-v run "reattach-to-user-namespace pbpaste | tmux load-buffer - && tmux paste-buffer"
 
 # Linux
 # getting tmux to copy a buffer to the system clipboard
-# bind y run-shell "tmux show-buffer | xclip -sel clip -i" \; display-message "Copied tmux buffer to system clipboard"
+bind y run-shell "tmux show-buffer | xclip -sel clip -i" \; display-message "Copied tmux buffer to system clipboard"
 
 
 #-- statusbar --#
@@ -120,3 +121,6 @@ set -g display-panes-colour colour166 #orange
 
 # clock
 setw -g clock-mode-colour colour64 #green
+
+# mouse
+set-window-option -g mode-mouse on
